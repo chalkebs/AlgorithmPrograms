@@ -145,5 +145,151 @@ public final class Utility {
 		System.out.println("Square root of "+c+"is: "+t);	
 	}
 
+	public static void binarySearchInt(int[] a1, int low, int high, int a) 
+	{
+            int mid = (low + high) / 2; 
+  
+            while(low <= high)
+            {
+               if(a1[mid]<a)
+               {
+            	   low=mid+1;
+               }
+               else if(a1[mid]==a)
+               		{
+            	   		System.out.println("\nNumber found "+a+" at index "+mid);
+            	   		break;
+               		}
+               else
+               {
+            	   high=mid-1;
+               }
+               mid=(low+high)/2;
+            }   
+            if(low>high)
+            {
+            	System.out.println("\nNumber not found in integer array...");
+            }
+  	}
+	
+	
+	public static void binarySearchStr(char[] s2, int low, int high, char str) 
+	{
+		int mid = (low + high) / 2; 
+		  
+        while(low <= high)
+        {
+           if(s2[mid]<str)
+           {
+        	   low=mid+1;
+           }
+           else if(s2[mid]==str)
+           		{
+        	   		System.out.println("\nCharacter found "+str+" at index "+mid);
+        	   		break;
+           		}
+           else
+           {
+        	   high=mid-1;
+           }
+           mid=(low+high)/2;
+        }   
+        if(low>high)
+        {
+        	System.out.println("\nCharacter not found in string array...");
+        }
+		
+	}
+
+	public static void insertionSortInt(int[] a1, int b3) 
+	{
+		int i,j,temp;
+		for(i=1;i<b3;i++)
+		{	
+			temp=a1[i];
+			j=i-1;
+			
+			while(j>=0 && a1[j]>temp)
+			{
+				a1[j+1]=a1[j];
+				j=j-1;
+			}
+			a1[j+1]=temp;
+		}
+	
+		for(i=0;i<b3;i++)
+		{
+			System.out.print(a1[i]+",");
+			System.out.println();
+		}
+	}
+
+	public static void insertionSortStr(char[] s2, int b2) 
+	{
+		int i,j;
+		char temp;
+		for(i=1;i<b2;i++)
+		{	
+			temp=s2[i];
+			j=i-1;
+			
+			while(j>=0 && s2[j]>temp)
+			{
+				s2[j+1]=s2[j];
+				j=j-1;
+			}
+			s2[j+1]=temp;
+		}
+		
+		String s7=new String(s2); 
+		System.out.print(s7);
+		System.out.println();
+	}
+
+	public static void bubbleSortInt(int[] a1, int b3) 
+	{
+		int i,j,temp;
+		for(i=0;i<b3-1;i++)
+		{
+			for(j=i+1;j<b3;j++)
+			{
+				if(a1[i]>a1[j])
+				{
+					temp=a1[i];
+					a1[i]=a1[j];
+					a1[j]=temp;
+				}
+			}
+		}
+		System.out.println("\nbubble sorting of integer array...");
+		for(i=0;i<b3;i++)
+		{
+			System.out.print(a1[i]+",");
+		}
+		
+	}
+
+	public static void bubbleSortStr(char[] s2, int b2) 
+	{	
+		int i,j;
+		char temp;
+		for(i=0;i<b2-1;i++)
+		{
+			for(j=i+1;j<b2;j++)
+			{
+				if(s2[i]>s2[j])
+				{
+					temp=s2[i];
+					s2[i]=s2[j];
+					s2[j]=temp;
+				}
+			}
+		}
+		System.out.println();
+		System.out.println("\nbubble sorting of character array...");
+		String s5=new String(s2); 
+		System.out.print(s5);
+	}
+
 }
 
