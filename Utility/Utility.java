@@ -176,7 +176,6 @@ public final class Utility {
 	public static void binarySearchStr(char[] s2, int low, int high, char str) 
 	{
 		int mid = (low + high) / 2; 
-		  
         while(low <= high)
         {
            if(s2[mid]<str)
@@ -346,5 +345,36 @@ public final class Utility {
         }
 	}
 
+	public static int vm( int N,int i,int c, int[] a) 
+	{	
+	  if(N==0)
+	  {
+		return c;  
+	  }
+	  else
+	  {
+		if(N>=a[i]) 
+		{
+			N=N-a[i];
+			System.out.println("Note--> "+a[i]);
+			c++;
+			i=0;
+			return vm(N,i,c,a);
+		}
+		if(N!=0)
+		{
+			i++;
+			return vm(N,i,c,a);
+		}
+	  }
+	return c;
+	}
+
+	public static void binarySearchword(String str, ArrayList<String> listOfLines) 
+	{
+		int w = Collections.binarySearch(listOfLines, str);
+        System.out.println("\nWord found at index position "+w+" from Sorted ArrayList");
+		
+	}
 }
 
