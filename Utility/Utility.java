@@ -291,5 +291,60 @@ public final class Utility {
 		System.out.print(s5);
 	}
 
+	public static void findNumber(int N) 
+	{	
+		Scanner s=new Scanner(System.in);
+		int n=N/2,i;
+		int[] a=new int[N];
+		for(i=0;i<N;i++)
+		{
+			a[i]=i;
+		}
+		System.out.println();
+		System.out.println("Think of a number between 0 and "+(N-1));
+		System.out.println();
+		int low=0,high=N-1;
+		int mid = (low + high) / 2; 
+        
+        while(low <= high)
+        {
+          System.out.println("1 --> Enter 1 if number is greater than "+mid);
+          System.out.println("2 --> or if number is less than "+mid+" enter 0");
+          System.out.println("3 --> Otherwise Enter 2...");
+          int s1=s.nextInt();
+           if(s1==1)
+           {
+        	   low=mid+1;
+        	   if(mid==high-1)
+        	   {
+        		   System.out.println("Number is: "+high);
+        		   System.out.println("Intermediary number is: "+mid);
+        		   break;
+        	   }
+           }
+           else if(s1==0)
+           		{
+           			high=mid-1;
+           		    if(mid==low+1)
+          	        {
+          		        System.out.println("Number is: "+low);
+          		        System.out.println("Intermediary number is: "+mid);
+          		        break;
+          	        }
+           		}
+           		else if(s1==2)
+           			{
+           				System.out.println("Number is: "+mid);
+           				System.out.println("Intermediary number is: "+mid);
+           				break;
+           			}
+           	mid=(low+high)/2;  
+        }
+        if(low>high)
+        {
+        	System.out.println("\nInvalid Number...");
+        }
+	}
+
 }
 
