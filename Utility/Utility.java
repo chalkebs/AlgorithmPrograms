@@ -1,5 +1,9 @@
 package util;
 import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
 public final class Utility {
 
 	
@@ -376,5 +380,47 @@ public final class Utility {
         System.out.println("\nWord found at index position "+w+" from Sorted ArrayList");
 		
 	}
+
+	public static void toBinary(int b) 
+	{
+		List<Integer> a=new ArrayList<Integer>();
+		while(b>0)
+		{
+			a.add(b%2);
+			b=b/2;
+		}
+		Collections.reverse(a);
+		String c = a.toString().replace(",", "").replace("[", "").replace("]", "").trim();
+		System.out.println("\n\nBinary format...");
+		System.out.print(c);
+	}
+
+	public static void swapNibbles(int b) 
+	{
+		int f=((b&0x0F)<<4|(b&0xF0)>>4);
+		toBinary(f);
+		System.out.println("\n\nNew no. after swapping nibbles...");
+		System.out.print(f);
+		
+		int g,count;
+	    g=f;
+	    count=0;
+	    
+	    while(g!=1)
+	    {
+	        if(g%2!=0)
+	        {
+	            count=1;
+	            break;
+	        }
+	        g=g/2;
+	    }
+	  
+	    if(count==0)
+	        System.out.println("\n\n"+f+" is a number that is the power of 2...");
+	    else
+	    	System.out.println("\n\n"+f+" is not the power of 2...");
+	}
+	
 }
 
