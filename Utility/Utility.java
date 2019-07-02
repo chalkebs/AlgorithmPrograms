@@ -1,9 +1,5 @@
 package util;
 import java.util.*;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
-
 public final class Utility {
 
 	
@@ -69,7 +65,11 @@ public final class Utility {
 	
 	public static void Prime1()
 	{	
+		ArrayList<Integer> a=new ArrayList<Integer>();
 		int l,k,c=0;
+		
+		a.add(2);
+		System.out.print("2,");
         for(l=2;l<=1000;l++)
         {
                for(k=2;k<l;k++)
@@ -86,10 +86,34 @@ public final class Utility {
                }
                if(c==1)
                {
+            	   a.add(l);
                    System.out.print(l+",");
                }
          }
+        System.out.println();
+     
+        primePalindrome(a);
 	}
+	
+	private static void primePalindrome(ArrayList<Integer> a) 
+	{
+		System.out.println("\nPrime Palindromes are...");
+		 int b,sum=0,temp;    
+		  
+		 for(int i:a)
+		 {
+			temp=i;
+		  	while(temp>0)
+		  	{    
+		  		b=i%10;  
+		  		sum=(sum*10)+b;    
+		  		i=i/10;    
+		  	}    
+		  	if(temp==sum)    
+		  		System.out.println(i+" ");      
+		 }
+	}
+
 	
 	
 	public static void dayOfWeek(int d, int m, int y) {
@@ -383,7 +407,7 @@ public final class Utility {
 
 	public static void toBinary(int b) 
 	{
-		List<Integer> a=new ArrayList<Integer>();
+		ArrayList<Integer> a=new ArrayList<Integer>();
 		while(b>0)
 		{
 			a.add(b%2);
@@ -421,6 +445,49 @@ public final class Utility {
 	    else
 	    	System.out.println("\n\n"+f+" is not the power of 2...");
 	}
-	
+
+	public static void mergeSort(int[] b, int low, int high) 
+	{
+		if(high-low+1>1)
+		{
+            int mid = (low+high)/2;
+            mergeSort(b,low,mid);
+            mergeSort(b,mid+1,high);
+            merging(b,low,mid,high);
+		}
+	}
+
+	private static void merging(int[] b, int low, int mid, int high) 
+	{
+		int i,j,k;
+        int[] c= new int[high-low+1];
+        k = 0;
+        i=low;
+        j=mid+1;
+        while(i<=mid && j<=high)
+        {
+            if(b[i]<=b[j])
+            {
+                c[k++] = b[i++];
+            }
+            else
+            {
+                c[k++] = b[j++];
+            }
+        }
+        while(i<=mid)
+        {
+            c[k++] = b[i++];
+        }
+        while(j<=high)
+        {
+            c[k++] = b[j++];
+        }
+        k=0;
+        for(i = low; i<=high; i++)
+        {
+            b[i] = c[k++];
+        }
+	}
 }
 
