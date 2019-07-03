@@ -93,24 +93,101 @@ public final class Utility {
         System.out.println();
      
         primePalindrome(a);
+        anagram(a);
 	}
 	
+	private static void anagram(ArrayList<Integer> a) 
+	{
+		int i,j;
+		System.out.println("\nPrime Anagrams are...");
+		Integer[] b = new Integer[a.size()];
+	    for (i = 0; i < a.size(); i++) 
+	    {
+	           b[i] = a.get(i);
+	    }
+	    i=0;
+	    System.out.print(b[i]);
+	    String c[] = new String[b.length];
+		for (i = 0; i < b.length; i++)
+			c[i] = String.valueOf(b[i]);
+		for(i=0;i<c.length-1;i++)
+		{
+			for(j=i+1;j<c.length;j++)
+			{
+				//anagram2(c[i],c[j]);
+			}
+		}
+		
+	}
+
+	private static void anagram2(String x, String y) 
+	{
+			int i,j,c,d,g=0;
+			char temp;
+			char[] e = x.toCharArray();
+		    char[] f = y.toCharArray();
+		    c=e.length;
+		    d=f.length;
+		    if(c==d)
+		    {
+		        for(i=0;i<c-1;i++)
+		        {
+		            for(j=i+1;j<c;j++)
+		            {  
+		                if(e[i]>e[j])
+		                {
+		                    temp=e[i];
+		                    e[i]=e[j];
+		                    e[j]=temp;
+		                }  
+		            }
+		        }
+		        for(i=0;i<c-1;i++)
+		        {
+		            for(j=i+1;j<c;j++)
+		            {  
+		                if(f[i]>f[j])
+		                {
+		                    temp=f[i];
+		                    f[i]=f[j];
+		                    f[j]=temp;
+		                }  
+		            }
+		        }
+		        for(i=0;i<c;i++)
+		        {
+		            if(e[i]==f[i])
+		            {
+		                g++;
+		            }
+		        }
+		        
+		        
+		        if(g==c)
+		        {
+		            System.out.print(e+" "+f+",");
+		        }
+		    
+		    }
+		
+	}
+
 	private static void primePalindrome(ArrayList<Integer> a) 
 	{
 		System.out.println("\nPrime Palindromes are...");
 		 int b,sum=0,temp;    
-		  
-		 for(int i:a)
+		 for(int i=0;i<a.size();i++)
 		 {
-			temp=i;
+			temp=a.get(i);
 		  	while(temp>0)
 		  	{    
-		  		b=i%10;  
+		  		b=temp%10;  
 		  		sum=(sum*10)+b;    
-		  		i=i/10;    
+		  		temp=temp/10;    
 		  	}    
-		  	if(temp==sum)    
-		  		System.out.println(i+" ");      
+		  	if(a.get(i)==sum)    
+		  		System.out.print(a.get(i)+",");    
+		  	sum=0;
 		 }
 	}
 
